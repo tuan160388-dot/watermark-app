@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Image Watermarker — Upload to GitHub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Watermark + Upload to GitHub</h1>
+
+    <section class="panel">
+      <label>Chọn ảnh (local):</label>
+      <input id="fileInput" type="file" accept="image/*" />
+    </section>
+
+    <section class="panel">
+      <label>Watermark text:</label>
+      <input id="wmText" type="text" placeholder="Ví dụ: © YourName 2025" />
+
+      <div class="small-row">
+        <label>Font size:</label>
+        <input id="wmSize" type="number" value="36" min="8" max="200" />
+        <label>Opacity (0-1):</label>
+        <input id="wmOpacity" type="number" value="0.6" min="0" max="1" step="0.05" />
+      </div>
+
+      <div class="small-row">
+        <label>Position:</label>
+        <select id="wmPos">
+          <option value="bottom-right">Bottom Right</option>
+          <option value="bottom-left">Bottom Left</option>
+          <option value="top-right">Top Right</option>
+          <option value="top-left">Top Left</option>
+          <option value="center">Center</option>
+        </select>
+
+        <label>Use logo (optional):</label>
+        <input id="logoInput" type="file" accept="image/*" />
+      </div>
+
+      <button id="applyBtn">Áp dụng watermark</button>
+      <button id="downloadBtn" disabled>Tải ảnh đã watermark</button>
+    </section>
+
+    <section class="panel">
+      <h3>Upload lên GitHub</h3>
+      <div class="info">Bạn cần: owner (user hoặc org), repo, path, và Personal Access Token (PAT)</div>
+
+      <input id="ghOwner" placeholder="owner (username hoặc org)" />
+      <input id="ghRepo" placeholder="repo (tên repo)" />
+      <input id="ghPath" placeholder="file path trong repo (ví dụ: images/my-wm.jpg)" />
+      <input id="ghToken" placeholder="Personal Access Token (PAT) (đặt ở đây để demo)" type="password" />
+
+      <div class="small-row">
+        <label>Commit message:</label>
+        <input id="commitMsg" value="Upload watermarked image" />
+      </div>
+
+      <button id="uploadGhBtn" disabled>Upload ảnh lên GitHub</button>
+      <div id="status" class="status"></div>
+    </section>
+
+    <section class="panel">
+      <h3>Preview</h3>
+      <canvas id="canvas" style="max-width:100%"></canvas>
+    </section>
+
+    <footer>
+      <small>Demo — chạy cục bộ hoặc host bằng GitHub Pages. Đọc README để biết cách đẩy lên repo.</small>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
